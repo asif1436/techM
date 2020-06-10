@@ -1,0 +1,340 @@
+{% extends 'student/base.html' %}
+
+{% load static %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+
+    <section class="content pt-3">
+        <div class="container-fluid"> 
+            <div class="card card-default">
+                <div class="card-header with-border">
+                    <h3 style="text-align:center;">Application</h3>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="col-md-12">                                                  
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="text-center">
+                                        <h1> Tech Mahindra Limited</h1>
+                                        <p> Sharda Center, zoff Karve Roaf, Pune-411 004</p>
+                                        <h3> Application for Employment</h3>
+                                    </div>
+                                </div>                                  
+                                <div class="col-md-2"> 
+                                    <div class="col-md-12">                                         
+                                       {% if form_p.e_photo %}<img src="{{ form_p.e_photo.url }}" style="width:90px;" />{% endif %}
+                                    </div>                                    
+                                </div>                                                 
+                            </div>                         
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Name Mr./Ms.</label>
+                                        <div class="form-control">{{ form_p.e_name|title }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Gender</label>
+                                        <div class="form-control">{{ form_p.e_gender }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Father Name</label>
+                                        <div class="form-control">{{ form_p.e_father_name }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Mother Name</label>
+                                        <div class="form-control">{{ form_p.e_mother_name }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Date of birth</label>
+                                        <div class="form-control">{{ form_p.e_dob }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Place of Birth</label>
+                                        <div class="form-control">{{ form_p.e_place_of_birth }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Marital Status</label>
+                                        <div class="form-control">{{ form_p.e_marital_status }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Nationality</label>
+                                        <div class="form-control">{{ form_p.e_nationality }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <div class="form-control">{{ form_p.e_email }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <div class="card card-primary">
+                                        <div style="border-bottom:1px solid #ddd;" class="card-header">
+                                            <h3 class="card-title">Passport Detailes</h3>
+                                        </div>
+                                        <div class="card-body">                                            
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Passport No</label>
+                                                        <div class="form-control">{{ form_p.e_passport_no }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Place of Passport issue</label>
+                                                        <div class="form-control">{{ form_p.e_place_of_pp_issue }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">    
+                                                    <div class="form-group">
+                                                        <label>Date of issue</label>
+                                                        <div class="form-control">{{ form_p.e_date_of_pp_issue }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Date of Expiry</label>
+                                                        <div class="form-control">{{ form_p.e_date_of_pp_expiry }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>                                     
+                                        </div>                                                
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card card-primary">
+                                        <div style="border-bottom:1px solid #ddd;" class="card-header">
+                                            <h3 class="card-title">New Passport</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Applied for Passport</label>
+                                                        <div class="form-control">{{ form_p.e_applied_for_pp }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Application No</label>
+                                                        <div class="form-control">{{ form_p.e_pp_application_no }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Date of Application</label>
+                                                        <div class="form-control">{{ form_p.e_date_of_application }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                           
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card card-primary">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Working relative with Mahindra group </h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Working Relative</label>
+                                                        <div class="form-control">{{ form_p.e_working_relative }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Name of Relative</label>
+                                                        <div class="form-control">{{ form_p.e_name_of_relatiove }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Relationship</label>
+                                                        <div class="form-control">{{ form_p.e_relationship }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Name of Company</label>
+                                                        <div class="form-control">{{ form_p.e_company }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                                            
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card card-primary">
+                                        <div class="card-header">
+                                            <h3 class="card-title"> Address</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Present Address</label>
+                                                        <div class="rounded border p-3">{{ form_p.e_present_address }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Permanent Address</label>
+                                                        <div class="rounded border p-3">{{ form_p.e_premanent_address }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-12">
+                                        <div class="card card-primary">
+                                            <div class="card-header">
+                                                <h3 class="card-title"> Education </h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <table class="table table-bordered table-responsive">
+                                                        <thead >
+                                                            <tr>
+                                                            <th>Education</th>
+                                                            <th>College</th>
+                                                            <th>Name of Degree</th>
+                                                            <th>Duration</th>
+                                                            <th>Specialization</th>
+                                                            <th>Percentage</th>
+                                                            </tr>
+                                                        </thead> 
+                                                       {% for form_p in form %}                                      
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>{{ form_p.education }}</td>
+                                                                <td>{{ form_p.college }}</td>
+                                                                <td>{{ form_p.name_of_degree }}</td>
+                                                                <td>
+                                                                    <table>                                                                    
+                                                                        <tbody>
+                                                                           
+                                                                            {{ form_p.duration_from }}
+                                                                            {{ form_p.duration_to }}
+                                                                           
+                                                                        </tbody>                                                                
+                                                                    </table>                                                                
+                                                                </td>
+                                                                <td>{{ form_p.specialization }}</td>
+                                                                <td>{{ form_p.percentage }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                        {% endfor %}
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                                        
+                                </div>
+                            </div>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}
+
+{% block JavaScript %}
+<script type="text/javascript">
+  $(function () {
+      $(".date_picker").datepicker({
+        dateFormat: 'dd/mm/yyyy',
+        format: 'dd/mm/yyyy'
+      });
+
+      $(".date_picker_prev").datepicker({
+        maxDate: 0,
+        format: 'dd/mm/yyyy'
+      });
+      $('#daterange').daterangepicker({
+        autoUpdateInput: false,
+        locale: {
+            cancelLabel: 'Clear',
+            format: 'DD/MM/YYYY'
+        },
+          ranges: {
+             'Today': [moment(), moment()],
+             'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+             'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+             'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+             'This Month': [moment().startOf('month'), moment().endOf('month')],
+             'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+             'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+             'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+          }
+      });
+      $('#daterange').on('apply.daterangepicker', function(ev, picker) {
+          $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+      });
+      $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
+          $(this).val('');
+      });
+  });
+  $(document).ready(function(){
+  $("li.treeview").mouseover(function(){
+    $(this).addClass("menu-open");
+    $(this).children("ul.treeview-menu").css("display","block");
+  });
+  $("li.treeview").mouseout(function(){
+    $(this).removeClass("menu-open");
+    $(this).children("ul.treeview-menu").css("display","none");
+  });
+
+});
+
+////////////////////   search table start  //////////////////
+
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+
+////////////////////   search table end  //////////////////   
+    
+</script>
+
+{% endblock %}

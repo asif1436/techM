@@ -1,0 +1,99 @@
+{% extends 'student/base.html' %}
+
+{% load static %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+    <section class="content pt-3">
+        <div class="container-fluid"> 
+            <div class="card card-default">
+                <div class="card-header with-border">
+                    <h3 style="text-align:center;">Employees form</h3>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="col-md-12">
+                        {% if form is not None %}
+                        {% if form %}
+                        {% endif %}
+                            <table id="datatable" class="table table-bordered table-responsive">
+                                    <thead>
+                                        <th>S.No.</th>
+                                        <th>Name</th>
+                                        <th>Gender</th>
+                                        <!-- <th>Name</th>
+                                        <th>User_Name</th> -->
+                                        <th>Date of Birth/th>
+                                        <!-- <th>Designation</th>
+                                        <th>Salary Details</th>
+                                        <th>Email id</th>
+                                        <th>Phone_no.</th>
+                                        <th>Aadhar</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>-->
+                                        <th>Photo</th>
+                                        <th>Action</th>
+                                    </thead>
+                                    <tbody>                                   
+                                        {% for p in form %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ p.e_name }}</td>
+                                                <td>{{ p.e_gender }}</td>
+                                                <!--  <td>{{ p.e_father_name }}</td>
+                                                 <td>{{ p.e_mother_name }}</td> -->
+                                                <td>{{ p.e_dob }}</td>
+                                                <!-- <td>{{ p.e_place_of_birth }}</td>
+                                                <td>{{ p.e_marital_status }}</td>
+                                                <td>{{ p.e_nationality }}</td>
+                                                <td>{{ p.e_passport_no }}</td>
+                                                <td>{{ p.e_place_of_pp_issue }}</td>
+                                                <td>{{ p.e_date_of_pp_expiry }}</td>
+                                                <td>{{ p.e_applied_for_pp }}</td>
+                                                <td>{{ p.e_pp_application_no }}</td>
+                                                <td>{{ p.e_date_of_application }}</td>
+                                                <td>{{ p.e_present_address }}</td>
+                                                <td>{{ p.e_premanent_address }}</td>
+                                                <td>{{ p.e_email }}</td>
+                                                <td>{{ p.e_working_relative }}</td>
+                                                <td>{{ p.e_name_of_relatiove }}</td>
+                                                <td>{{ p.e_education.education }}</td>
+                                                <td>{{ p.e_company }}</td> -->
+                                                <td>{% if p.e_photo %}<img src="{{ p.e_photo.url }}" style="width:90px;" />{% endif %}</td>
+                                                <td> 
+                                                    <a href="{% url 'view1' p.pk %}" class="btn btn-sm btn-success btn-flat waves-effect">
+                                                    <i class="material-icons blue-text">View</i>
+                                                    </a>            
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>                        
+                        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                            
+                        {% else %}
+                            <p>The Employee could not be found.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
