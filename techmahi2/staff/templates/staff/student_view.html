@@ -78,20 +78,20 @@
                                                 <td>{{ p.e_name_of_relatiove }}</td>
                                                 <td>{{ p.e_education.education }}</td>
                                                 <td>{{ p.e_company }}</td> -->
-                                                <td > {% if p.status == True %}<input class="btn btn-sm btn-success btn-flat waves-effect" id="active{{ p.pk }}" type="submit" name="{{ p.pk }}" value="Yes">{% else %}<input class="btn btn-sm btn-danger btn-flat waves-effect" id="active{{ p.pk }}" type="submit" name="{{ p.pk }}" value="No">{% endif %}</td> 
+                                                <td > {% if p.status == True %}<input class="btn btn-sm btn-success waves-effect" id="active{{ p.pk }}" type="submit" name="{{ p.pk }}" value="Yes">{% else %}<input class="btn btn-sm btn-danger waves-effect" id="active{{ p.pk }}" type="submit" name="{{ p.pk }}" value="No">{% endif %}</td> 
                                                 <td>{% if p.e_photo %}<img src="{{ p.e_photo.url }}" style="width:90px;" />{% endif %}</td>
                                                 <!-- {% for c in edu_form %}
                                                 <td>{% if c.certificates %}<img src="{{ edu_form.certificates }}" style="width:90px;" />{% endif %}</td>
                                                 {% endfor %} -->
                                                 <td> 
-                                                    <a href="{% url 'view1' p.pk %}" class="btn btn-sm btn-success btn-flat waves-effect">
+                                                    <a href="{% url 'view1' p.pk %}" class="btn btn-sm btn-success btn-sm waves-effect">
                                                         <i class="material-icons blue-text">View</i>
-                                                    </a>
+                                                    </a> <br><br>
                                                     <!-- <a href="{% url 'edit_student' p.pk %}" class="btn btn-sm btn-success btn-flat waves-effect">
                                                         <i class="material-icons blue-text">Edit</i>
                                                     </a> -->
-                                                    <a href="{% url 'delete_student' p.pk %}" class="btn btn-sm btn-danger btn-flat waves-effect">
-                                                        <i class="material-icons blue-text">Delete</i>
+                                                    <a href="{% url 'delete_student' p.pk %}" class="btn btn-sm btn-danger btn-sm waves-effect"  onclick="return confirm('Are you Sure!')";>
+                                                        <i class = "material-icons blue-text" >Delete</i>
                                                     </a>
                                                     <!-- <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success"> -->
             
@@ -114,6 +114,7 @@
     <script src="{% static 'admin-lte/plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}"></script>
 {% endblock %}
 {% block extra_js %}
+<!-- delete modal -->
 
 <script>
 
@@ -129,11 +130,11 @@
             success: function(result){
                 var data =  jQuery.parseJSON(result);
                 if (data.active == "True") {
-                    $('input#active' + my_id ).removeClass("btn btn-sm btn-danger btn-flat waves-effect" ).addClass("btn btn-sm btn-success btn-flat waves-effect")
+                    $('input#active' + my_id ).removeClass("btn btn-sm btn-danger waves-effect" ).addClass("btn btn-sm btn-success waves-effect")
                     $('input#active' + my_id ).val("Yes");
                 }
                 else if (data.deactive == "True") {
-                    $('input#active' + my_id ).removeClass("btn btn-sm btn-success btn-flat waves-effect" ).addClass("btn btn-sm btn-danger btn-flat waves-effect")
+                    $('input#active' + my_id ).removeClass("btn btn-sm btn-success waves-effect" ).addClass("btn btn-sm btn-danger waves-effect")
                     $('input#active' + my_id ).val("No");
                 }
             }

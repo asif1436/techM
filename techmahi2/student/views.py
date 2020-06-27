@@ -43,7 +43,7 @@ def register(request):
         signup = Student_SignUpForm(request.POST)
         if signup.is_valid():
             signup.save()
-            return HttpResponseRedirect('home/')
+            return HttpResponseRedirect('/home/')
     signup = Student_SignUpForm()
     return render(request, 'student/register.html', {'signup': signup})
 
