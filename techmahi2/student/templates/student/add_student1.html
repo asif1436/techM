@@ -927,10 +927,6 @@
                                     <button type="submit", class="btn btn-success"> Submit</button>
                                     <a href="{% url 'home' %}" class="btn btn-danger">Cancel</a>
                                 </div>
-                                
-                                <input id="abcd" type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
-                                   
-
                             </form>
                         {% else %}
                             <h1>not found</h1>
@@ -945,15 +941,11 @@
 
 {% block extra_js %}
 
-<script>    
-    $(function() {
-        $('[data-inputmask]').inputmask()
-    });
-        
-</script> 
-
 
 <script type="text/javascript">
+$(function() {
+        $('[data-inputmask]').inputmask()
+    });
 
 $("select#id_e_gender.form-control option[value='']").html('<option>Gender</option>'); //dropdown default value set
 $("select#id_e_marital_status.form-control option[value='']").html('<option>Married</option>');
