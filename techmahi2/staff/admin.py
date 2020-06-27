@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import *
-from import_export.admin import ImportExportModelAdmin
+
 # Register your models here.
 class EmployeeAdmin(admin.ModelAdmin):
     list_display = ('id','e_name', 'e_gender','e_photo', 'e_father_name', 'e_mother_name', 'e_dob', 'e_place_of_birth', 'e_marital_status', 'e_nationality', 'e_passport_no', 'e_place_of_pp_issue', 'e_date_of_pp_issue', 'e_date_of_pp_expiry', 'e_applied_for_pp', 'e_pp_application_no', 'e_date_of_application', 'e_email', 'e_working_relative', 'e_name_of_relatiove', 'e_relationship', 'e_company')
@@ -9,7 +9,7 @@ admin.site.register(Employee ,EmployeeAdmin)
 
 class EducationAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'education', 'college', 'name_of_degree', 'duration_from', 'duration_to', 'specialization', 'percentage')
-    
+
 admin.site.register(Education ,EducationAdmin)
 
 class Countries_travelledAdmin(admin.ModelAdmin):
@@ -66,4 +66,4 @@ admin.site.register(Candidate_declaration_form, Candidate_declaration_formAdmin)
 
 class Candidate_acceptance_formAdmin(admin.ModelAdmin):
   exclude = ['employee']
-admin.site.register(Candidate_acceptance_form, Candidate_acceptance_formAdmin)        
+admin.site.register(Candidate_acceptance_form, Candidate_acceptance_formAdmin)

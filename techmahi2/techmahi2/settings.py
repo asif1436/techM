@@ -24,14 +24,14 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'zyj7r1_ez8@@jy+@*+$wr^gc*8b3fe%7_nntv-ow58u54e%u(1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['asif1436.pythonanywhere.com',]
 
 
 # Application definition
 
-INSTALLED_APPS = [    
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,9 +42,8 @@ INSTALLED_APPS = [
     'staff',
     'student',
     'bootstrap4',
-    'formtools',
     'tempus_dominus',
-    
+
 ]
 
 
@@ -56,7 +55,7 @@ DATE_INPUT_FORMATS = (
             '%d-%m-%Y',  # '25-10-2006'
             )
 
-            
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
