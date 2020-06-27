@@ -1,0 +1,167 @@
+{% extends 'student/base.html'  %}
+{% load static %}
+{# Load the tag library #}
+{% load bootstrap4  %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css  %}
+
+{% bootstrap_javascript jquery='full' %}
+
+<!-- {# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %} -->
+
+{% block content  %}
+    <section class="content pt-3">
+        <div class="container-fluid"> 
+            <div class="card card-default">
+                <div class="card-header with-border">
+                    <h3 style="text-align:center;">Candidate Declaration Form</h3>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                   <div class="row">
+                        <div class="row col-md-12">                         
+                            <div class="border col-md-1"><h4>S.No</h4>
+                            </div>
+                            <div class="border text-center col-md-9"><h4>New Hire Declaration</h4>
+                            </div>
+                            <div class="border col-md-2"><h4>Agree</h4>
+                            </div>
+                            <div class="border col-md-1"><h3>1</h3>
+                            </div>
+                            <div class="border text-center col-md-9">
+                            {% bootstrap_field declaration_form.declaration_1 show_label=False %}
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>2</h3>
+                            </div>
+                            <div class="border text-center col-md-9">The details in my resume/application form will be used to complete a reference check which is a process comprising criminal antecedents, previous employments & address verifications. (If you feel your resume has a discrepancy, then please bring it to the notice of the Talent Acquisition Team)
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>3</h3>
+                            </div>
+                            <div class="border text-center col-md-9">I Thereby confirm that I have not paid anything incash or kind to any employee/affiliates/vendors of Tech Mahindra Ltd./Tech Mahindra Business Services Ltd. to get my job offer
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>4</h3>
+                            </div>
+                            <div class="border text-center col-md-9">I Thereby declare that I'm not a defaulter with any of the banks operating in India
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>5</h3>
+                            </div>
+                            <div class="border text-center col-md-9">I have / submitted the following documents :(Please check the boxes below) <br>HSC/Graduation Mark sheet <br> Offer Letter (previous employer/s) <br>Experience Letter (previous employer/s) <br>Salary/Bank Statements (last 3 Months - last/current employer) <br> PAN Card <br> Address Proof <br> Date of Birth Proof <br>Photo ID Proof
+                            </div>
+                            <div class="border col-md-2"><h3><br>{} <br>{} <br>{} <br>{} <br>{} <br>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>6</h3>
+                            </div>
+                            <div class="border text-center col-md-9">Self-attested photocopies of Candidate documents willbe used for Internal checks and Background Verification purpose hence will not be returned.
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>7</h3>
+                            </div>
+                            <div class="border text-center col-md-9"> I live within Tech Mahindra Ltd. /Tech Mahindra Business Services Ltd. Transport boundaries and have confirmed the same with the recruiting SPOC: (If not then please respond to the statement below)
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>8</h3>
+                            </div>
+                            <div class="border text-center col-md-9">If I live beyond the above mentioned transport boundaries I am willing to relocate. Note: Tech Mahindra Ltd./ Tech Mahindra Business Services Ltd. will not entertain any request for Transport outside the transport boundaries during your tenure.
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>9</h3>
+                            </div>
+                            <div class="border text-center col-md-9"> I am aware of the transport deduction in casel avail the company transport(For Hyderabad/Noida/Chandigarh Only) 
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>10</h3>
+                            </div>
+                            <div class="border text-center col-md-9">I am willing to work in 24*7 (rotational shifts as per the business need) with split weekly offs
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>11</h3>
+                            </div>
+                            <div class="border text-center col-md-9">Notwithstanding anything to the contrarystated elsewhere in the employment contract, I understand that I cannot availanyleaves in the first 6 months of employment.
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>12</h3>
+                            </div>
+                            <div class="border text-center col-md-9">I will adhere to theinduction/Trainingshift timings / office working hoursincluding but not limited to Log-in/Logout and will comply with the same. I shall not violate the same for reason whatsoever including but not limited to religious activities.
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>13</h3>
+                            </div>
+                            <div class="border text-center col-md-9">I hereby declare that I'm not a Full time/ Part Timeregular college student and would not requireleaves for any exams forthe next 6 months. I admit I have no plans to pursue further studies andl do not have any backlogs of exams pending.
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>14</h3>
+                            </div>
+                            <div class="border text-center col-md-9"> I agree that I do not suffer from any medical condition that will hinder my On Job performance.
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>15</h3>
+                            </div>
+                            <div class="border text-center col-md-9"> I am not required to undertake any planned hospitalization for any medical conditioninthe next 6 months.
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>16</h3>
+                            </div>
+                            <div class="border text-center col-md-9">I understand that I will be eligible for any IJP/growth only posts 18 months (minimum) from my date of joining.
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>17</h3>
+                            </div>
+                            <div class="border text-center col-md-9"> I have not been or notlisted by any government agency as being barred, suspended, proposed for suspension or debarment, or otherwise ineligible for participation in any government procurement programmes or contracts.
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>18</h3>
+                            </div>
+                            <div class="border text-center col-md-9">I have not at any time been found by a courtin any jurisdiction to have engagedin any offence involving bribery, corruption or similar activity.
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>19</h3>
+                            </div>
+                            <div class="border text-center col-md-9">To the best of my knowledge, I have at any time not been investigated or been suspected in anyjurisdiction of having engagedin any corrupt or other similar activity.
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>20</h3>
+                            </div>
+                            <div class="border text-center col-md-9"> I am not a government Official; or officials of a foreign political party or any candidate for any foreign political office or other persons who might assert a corruptor illegal influence on behalf of either party to this Agreement or on behalf of principals, directors, employees, partners, consultants, agents, representatives, officers or shareholders of any existing or potential customer; andl will immediately notify Tech Mahindra Ltd. /Tech Mahindra Business Services Ltd. in writingifl become aware of anybreach of the above clauses.
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                            <div class="border col-md-1"><h3>21</h3>
+                            </div>
+                            <div class="border text-center col-md-9"> I hereby declare to comply with the Business Data Protection policy of Tech Mahindra Ltd. / Tech Mahindra Business Services Ltd. which prohibits the usage of mobile phones, tablets, phablets or any other similar device on the operations floor & other work related areas a part from cafeterias/snacketerias. These devices have to be keptin switched off mode (applicable to Advisors and TC/Execs)
+                            </div>
+                            <div class="border col-md-2"><h3>{}</h3>
+                            </div>
+                        </div>
+                        <div class="fixed-action-btn">                        
+                            <a href="{% url 'background' %}" class="btn btn-success ml">Previous</a>
+                            <a href="{% url 'acceptance' %}" class="btn btn-success">Next</a>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </section> 
+{% endblock %}           

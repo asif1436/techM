@@ -1,0 +1,105 @@
+{% extends 'student/base.html'  %}
+{% load static %}
+{# Load the tag library #}
+{% load bootstrap4  %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css  %}
+
+{% bootstrap_javascript jquery='full' %}
+
+<!-- {# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %} -->
+
+{% block content  %}
+    <section class="content pt-3">
+        <div class="container-fluid"> 
+            <div class="card card-default">
+                <div class="card-header with-border">
+                    <h3 style="text-align:center;" class="card-primary">Background Veification Form</h3>
+                </div><!-- /.card-header -->
+                <div class="card-body">                         
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div style="border:1px solid #ddd;" class="card-header ">
+                            <h3 class="card-title ">Personal Details (Block letters) </h3>
+                        </div>
+                        <div class="card-body">                         
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {% bootstrap_field persanal_detailForm.name show_label=false %}
+                                </div>
+                                <div class="col-md-6">
+                                    {% bootstrap_field persanal_detailForm.gender show_label=False %}
+                                </div>
+                                <div class="col-md-6">
+                                    {% bootstrap_field persanal_detailForm.father_name show_label=False %}
+                                </div>
+                                <div class="col-md-6">
+                                    {% bootstrap_field persanal_detailForm.husband_name show_label=False %}
+                                </div>
+                                <div class="col-md-6">
+                                    {% bootstrap_field persanal_detailForm.employe_id show_label=False %}
+                                </div>
+                                <div class="col-md-6">
+                                    {% bootstrap_field persanal_detailForm.dob show_label=False %}
+                                </div>
+                                <div class="col-md-6 " id='datepicker'>
+                                    {% bootstrap_field persanal_detailForm.joining_date show_label=False %}
+                                </div>
+                                <div class="col-md-6">
+                                    {% bootstrap_field persanal_detailForm.joining_location show_label=False %}
+                                </div>
+                                <div class="col-md-6">
+                                    {% bootstrap_field persanal_detailForm.social_security_Number show_label=False %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                {{ edu_form.management_form }}
+                                <table class="table table-bordered table-responsive">
+                                    <thead >
+                                        <tr><h4 class="text-center" class="text-right">Associates Address Details</h4></tr>
+                                        <tr>
+                                        <th>building/apt Number</th>
+                                        <th>House/Door/Flat Number</th>
+                                        <th>street/colony Name</th>
+                                        <th>Landmark </th>
+                                        <th>City</th>
+                                        <th>State</th>
+                                        <th>Pincode</th>
+                                        <th>Phonoe No.</th>
+                                        <th>Duration <br>From/To</th>
+                                        </tr>
+                                    </thead>
+                                    {% for edu_form in associates_addressForm  %}
+                                    <tbody>
+                                        <tr>
+                                        <td>{% bootstrap_field edu_form.building_apt_name show_label=False %}</td>
+                                        <td>{% bootstrap_field edu_form.H_D_Flat_No show_label=False %}</td>
+                                        <td>{% bootstrap_field edu_form.street_colony show_label=False %}</td>
+                                        <td>{% bootstrap_field edu_form.landmark show_label=False %}</td>
+                                        <td>{% bootstrap_field edu_form.city show_label=False %}</td>
+                                        <td>{% bootstrap_field edu_form.state show_label=False %}</td>
+                                        <td>{% bootstrap_field edu_form.pincode show_label=False %}</td>
+                                        <td>{% bootstrap_field edu_form.phonoe show_label=False %}</td>
+                                        <td>{% bootstrap_field edu_form.duration_of_stay_from show_label=False %}{% bootstrap_field edu_form.duration_of_stay_to show_label=False %}</td>
+
+                                        </tr>                        
+                                    </tbody>
+                                    {% endfor %}
+                                </table>
+                                <h6>Please. Provide the details pertaining to your past all addresses and Employments from the Date of loining of Tech Mahindra Limited</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fixed-action-btn">                        
+                    <a href="{% url 'employee' %}" class="btn btn-success ml">Previous</a>
+                    <a href="{% url 'declartion' %}" class="btn btn-success">Next</a>
+                </div>    
+            </div>
+        </div>
+    </section> 
+{% endblock %}           

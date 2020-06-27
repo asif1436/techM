@@ -1,0 +1,145 @@
+{% extends 'student/base.html'  %}
+{% load static %}
+{# Load the tag library #}
+{% load bootstrap4  %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css  %}
+
+{% bootstrap_javascript jquery='full' %}
+
+<!-- {# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %} -->
+
+{% block content  %}
+    <section class="content pt-3">
+        <div class="container-fluid"> 
+            <div class="card card-default">
+                <div class="card-body">
+                   <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div style="border-bottom:1px solid #ddd;" class="card-header">
+                                    <h3 class="text-center" class="card-title">Candidate's Acceptance Form</h3>
+                                    <p class="text-center">(To be Filled in by Recruiter & Signed by Candidate)</p>
+                                </div>
+                                <div class="card-body">                         
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.name show_label=false %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.application_id show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.source show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.name_of_source show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.officer_code show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.employee_class show_label=False %}
+                                        </div>
+                                        <!-- Relevent Experience Fixation -->
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.type_of_experience show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.total_experience show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.relevant_experience show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.remarks show_label=False %}
+                                        </div>
+                                        <!-- Employment & Fitment Related Information -->
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.current_location show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.location_constraints show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.location_preference show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.is_passport_valid show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.ready_to_travel show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.visa_rejected show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.offered_ctc_excluding show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.offered_ctc_including show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.expected_ctc show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.current_ctc show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.job_role show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.type_of_employment show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.contract_start_date show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.contract_duration show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.joining_date show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.joining_location show_label=False %}
+                                        </div>
+                                        <!-- Commitments & Relevant Information -->
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.guest_house_accommodation show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.willing_work show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.notice_period show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.expected_joining_date show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.comments show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.declaration show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.recruter_name show_label=False %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% bootstrap_field candidate_acceptance.authority_name show_label=False %}
+                                        </div>
+                                    </div>
+                                    <div class="fixed-action-btn">                        
+                                        <a href="{% url 'declartion' %}" class="btn btn-success ml">Previous</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </section> 
+{% endblock %}           

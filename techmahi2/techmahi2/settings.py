@@ -40,10 +40,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'adminlte3',
     'staff',
+    'student',
     'bootstrap4',
+    'formtools',
+    'tempus_dominus',
+    
 ]
 
 
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
 DATE_INPUT_FORMATS = (
             '%d/%m/%Y',  # '25/10/2006'
             '%d-%m-%Y',  # '25-10-2006'
@@ -79,6 +86,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'techmahi2.wsgi.application'
+
+
+
+# SMTP EMAIL Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST= 'smtp.gmail.com'
+EMAIL_PORT= 587
+EMAIL_HOST_USER= 'itsmak100@gmail.com'
+EMAIL_HOST_PASSWORD= 'm@k12345'
+EMAIL_USE_TLS= True
+
 
 
 # Database
@@ -127,6 +145,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+LOGIN_REDIRECT_URL='/home/'
+LOGOUT_REDIRECT_URL='/accounts/login/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = '/static/'

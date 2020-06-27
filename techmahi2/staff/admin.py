@@ -49,12 +49,12 @@ class Permanent_addressAdmin(admin.ModelAdmin):
 admin.site.register(Permanent_address, Permanent_addressAdmin)
 
 class Present_addressAdmin(admin.ModelAdmin):
-  exclude = ['employee']
+  display = "__all__"
 admin.site.register(Present_address, Present_addressAdmin)
 
-class persanal_detailAdmin(admin.ModelAdmin):
+class Persanal_detailAdmin(admin.ModelAdmin):
   exclude = ['employee']
-admin.site.register(persanal_detail, persanal_detailAdmin)
+admin.site.register(Persanal_detail, Persanal_detailAdmin)
 
 class Associates_addressAdmin(admin.ModelAdmin):
   exclude = ['employee']
