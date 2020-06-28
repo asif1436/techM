@@ -23,6 +23,12 @@ from django.http import JsonResponse
 
 # Create your views here.
 
+def is_admin(request):
+    return True if request.user.is_staff else False
+
+def is_superuser(request):
+    return True if request.user.is_superuser else False
+
 def login(request):
     if request.method == "POST":
         username = request.POST['username']
