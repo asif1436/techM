@@ -28,14 +28,29 @@ def student_view(request):
         messages.error(request, 'Your don not have access', extra_tags='red')
         return HttpResponseRedirect('/home/')
     form = Employee.objects.filter(status=False)
-    edu_form = Education.objects.all()
-    return render(request, 'staff/student_view.html', {'form':form, 'edu_form':edu_form})
+    paginator = Paginator(form, 10)
+    page_no = request.GET.get('page')
+    try:
+        form = paginator.page(page_no)
+    except PageNotAnInteger:
+          form = paginator.page(1)
+    except EmptyPage:
+         form = paginator.page(paginator.num_pages)
+    return render(request, 'staff/student_view.html', {'form':form})
     
 def ActiveEmployee(request):
     if not is_admin(request):
         messages.error(request, 'Your don not have access', extra_tags='red')
         return HttpResponseRedirect('/home/')
     form = Employee.objects.filter(status=True)
+    paginator = Paginator(form, 10)
+    page_no = request.GET.get('page')
+    try:
+        form = paginator.page(page_no)
+    except PageNotAnInteger:
+          form = paginator.page(1)
+    except EmptyPage:
+         form = paginator.page(paginator.num_pages)
     return render(request, 'staff/student_view.html', {'form':form})
 
 def student_view1(request, p_id):

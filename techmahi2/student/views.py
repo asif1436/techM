@@ -34,7 +34,7 @@ def login(request):
             return HttpResponseRedirect('home/')
         else:
             # Return an 'invalid login' error message.
-            return render(request, 'student/login.html', )
+            return HttpResponseRedirect('/student/login/')
 
 
 
@@ -958,6 +958,9 @@ def Employe(request):
 
 
 def Employe_edit(request, p_id):
+    if not is_admin(request):
+        messages.error(request, 'Your don not have access', extra_tags='red')
+        return HttpResponseRedirect('/home/')
     emp = Employee.objects.get(pk=p_id)
     education_form_set = inlineformset_factory(Employee, Education, form=EducationForm, extra=5, max_num=5)
     countries_travelledForm_set = inlineformset_factory(Employee, Countries_travelled, form = Countries_travelledForm, max_num=3)
@@ -1208,6 +1211,9 @@ def Employe_edit(request, p_id):
 
 
 def delete_employ(request, p_id):
+    if not is_admin(request):
+        messages.error(request, 'Your don not have access', extra_tags='red')
+        return HttpResponseRedirect('/home/')
     data = Employee.objects.get(id=p_id)
     data.delete()
     messages.success(request, 'Employee deleted successfully', extra_tags='green')
