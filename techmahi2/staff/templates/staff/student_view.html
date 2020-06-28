@@ -1,0 +1,156 @@
+{% extends 'staff/dashboard.html' %}
+
+{% load static %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+    <section class="content pt-3">
+        <div class="container-fluid"> 
+            <div class="card card-default">
+                <div class="card-header with-border">
+                    <h3 style="text-align:center;">Employees form</h3>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="col-md-12">
+                        {% if form is not None %}
+                        {% if form %}
+                        {% endif %}
+                            <table id="datatable" class="table table-bordered table-responsive-md">
+                                    <thead>
+                                        <th>S.No.</th>
+                                        <th>Name</th>
+                                        <th>Gender</th>
+                                        <!-- <th>Name</th>
+                                        <th>User_Name</th> -->
+                                        <th>Date of Birth</th>
+                                        <!-- <th>Designation</th>
+                                        <th>Salary Details</th>
+                                        <th>Email id</th>
+                                        <th>Phone_no.</th>
+                                        <th>Aadhar</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>
+                                        <th>Address</th>-->
+                                        <th> Status Active</th>
+                                        <th>Photo</th>
+                                        <!-- <th>certificates</th> -->
+                                        <th>Action</th>
+                                    </thead>
+                                    <tbody>                                   
+                                        {% for p in form %}
+                                            <tr class="text-center">
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ p.e_name }}</td>
+                                                <td>{{ p.e_gender }}</td>
+                                                <!--  <td>{{ p.e_father_name }}</td>
+                                                 <td>{{ p.e_mother_name }}</td> -->
+                                                <td>{{ p.e_dob }}</td>
+                                                <!-- <td>{{ p.e_place_of_birth }}</td>
+                                                <td>{{ p.e_marital_status }}</td>
+                                                <td>{{ p.e_nationality }}</td>
+                                                <td>{{ p.e_passport_no }}</td>
+                                                <td>{{ p.e_place_of_pp_issue }}</td>
+                                                <td>{{ p.e_date_of_pp_expiry }}</td>
+                                                <td>{{ p.e_applied_for_pp }}</td>
+                                                <td>{{ p.e_pp_application_no }}</td>
+                                                <td>{{ p.e_date_of_application }}</td>
+                                                <td>{{ p.e_present_address }}</td>
+                                                <td>{{ p.e_premanent_address }}</td>
+                                                <td>{{ p.e_email }}</td>
+                                                <td>{{ p.e_working_relative }}</td>
+                                                <td>{{ p.e_name_of_relatiove }}</td>
+                                                <td>{{ p.e_education.education }}</td>
+                                                <td>{{ p.e_company }}</td> -->
+                                                <td > {% if p.status == True %}<input class="btn btn-sm btn-success waves-effect" id="active{{ p.pk }}" type="submit" name="{{ p.pk }}" value="Yes">{% else %}<input class="btn btn-sm btn-danger waves-effect" id="active{{ p.pk }}" type="submit" name="{{ p.pk }}" value="No">{% endif %}</td> 
+                                                <td>{% if p.e_photo %}<img src="{{ p.e_photo.url }}" style="width:90px;" />{% endif %}</td>
+                                                <!-- {% for c in edu_form %}
+                                                <td>{% if c.certificates %}<img src="{{ edu_form.certificates }}" style="width:90px;" />{% endif %}</td>
+                                                {% endfor %} -->
+                                                <td> 
+                                                    <a href="{% url 'view1' p.pk %}" class="btn btn-sm btn-success btn-sm waves-effect">
+                                                        <i class="material-icons blue-text">View</i>
+                                                    </a> <br><br>
+                                                    <!-- <a href="{% url 'edit_student' p.pk %}" class="btn btn-sm btn-success btn-flat waves-effect">
+                                                        <i class="material-icons blue-text">Edit</i>
+                                                    </a> -->
+                                                    <a href="{% url 'delete_student' p.pk %}" class="btn btn-sm btn-danger btn-sm waves-effect"  onclick="return confirm('Are you Sure!')";>
+                                                        <i class = "material-icons blue-text" >Delete</i>
+                                                    </a>
+                                                    <!-- <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success"> -->
+            
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>                        
+                        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                            
+                        {% else %}
+                            <p>The Employee could not be found.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Bootstrap Switch -->
+    <script src="{% static 'admin-lte/plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}"></script>
+{% endblock %}
+{% block extra_js %}
+<!-- delete modal -->
+
+<script>
+
+    $('input[id^=active]').click(function(){
+        var my_id= $(this).attr('name');
+        var url = "{% url 'active' %}";
+        $.ajax({
+            type : 'GET',
+            url: url,
+            data : {
+                'demo':my_id,
+                },
+            success: function(result){
+                var data =  jQuery.parseJSON(result);
+                if (data.active == "True") {
+                    $('input#active' + my_id ).removeClass("btn btn-sm btn-danger waves-effect" ).addClass("btn btn-sm btn-success waves-effect")
+                    $('input#active' + my_id ).val("Yes");
+                }
+                else if (data.deactive == "True") {
+                    $('input#active' + my_id ).removeClass("btn btn-sm btn-success waves-effect" ).addClass("btn btn-sm btn-danger waves-effect")
+                    $('input#active' + my_id ).val("No");
+                }
+            }
+        });
+    });
+    // $(document).ready(function(){
+    //     var my_id= getEleme .attr('name');
+    //     $('input#deactive' + my_id ).click(function(){
+    //         $(this).hide();
+    //         $('input#active' + my_id ).show();
+    //     });
+    //     $('input#active' + my_id).click(function(){
+    //         $(this).show();
+    //         $('input#deactive' + my_id ).hide();
+    //     });
+    // });
+</script>
+
+{% endblock %}

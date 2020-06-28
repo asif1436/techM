@@ -1,0 +1,970 @@
+{% extends 'staff/dashboard.html' %}
+{% load static %}
+{% load bootstrap4 %}       {# import bootstrap4/bootstrap3 #}
+{% bootstrap_css %}         {# Embed Bootstrap CSS #}
+{% bootstrap_javascript jquery='full' %}  {# Embed Bootstrap JS+jQuery #}
+
+<!-- {# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %} -->
+
+{% block content  %}
+
+    <!-- Content Header (Page header) -->
+    <!-- <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Student Application</h1>
+                </div>
+                <div class="col-sm-6">
+                    <a class="btn btn-primary float-sm-right" href="#">view all students</a>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Main content -->
+    <section class="content pt-3">
+        <div class="container-fluid"> 
+            <div class="card card-default">
+                <div class="card-header with-border">
+                    <h3 style="text-align:center;">Application</h3>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="col-md-12">
+                        {% if form_p %}
+                            <form method="POST" class="form" enctype="multipart/form-data" >
+                                {{ form.media }}            {# Adds date-picker required JS and CSS #} 
+
+                                {% csrf_token %}
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <div class="text-center">
+                                                        <h1> Tech Mahindra Limited</h1>
+                                                        <p> Sharda Center, zoff Karve Roaf, Pune-411 004</p>
+                                                        <h4> Application for Employment</h4>
+                                                    </div>
+                                                </div>                                  
+                                                <div class="col-md-2"> 
+                                                    <div style="text-align: center;" class="col-md-12">                                         
+                                                        {% if form_p.e_photo.value  %}
+                                                            <img style="width:100%; border-radius:5px;" src="{{ form_p.e_photo.value.url }}" id="image_preview" class="img-responsive" alt="">
+                                                        {% else %}
+                                                            <img style="width:80%; border-radius:5px;" src='{% static "admin-lte/dist/img/avatar5.png" %}' id="image_preview" class="img-responsive">
+                                                        {% endif  %}
+                                                    </div>
+                                                    <div style="text-align: center;" class="col-sm-12">
+                                                        {% bootstrap_field form_p.e_photo %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="card card-primary">
+                                        <div style="border-bottom:1px solid #ddd;" class="card-header">
+                                            <h3 class="card-title">Persional Information</h3>
+                                        </div>
+                                        <div class="card-body">                         
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field form_p.e_name show_label=false %}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field form_p.e_gender show_label=False %}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field form_p.e_father_name show_label=False %}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field form_p.e_mother_name show_label=False %}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field form_p.e_dob show_label=False %} 
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field form_p.e_place_of_birth show_label=False %}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field form_p.e_marital_status show_label=False %}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field form_p.e_nationality show_label=False %}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field form_p.e_email show_label=False %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-md-6">
+                                        <div class="card card-primary">
+                                            <div style="border-bottom:1px solid #ddd;" class="card-header">
+                                                <h3 class="card-title">Passport Detailes</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field form_p.e_passport_no show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field form_p.e_place_of_pp_issue show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6 ">
+                                                        {% bootstrap_field form_p.e_date_of_pp_issue show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field form_p.e_date_of_pp_expiry show_label=False %}
+                                                    </div>
+                                                </div>                                                    
+                                            </div>                                                
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card card-primary">
+                                            <div style="border-bottom:1px solid #ddd;" class="card-header">
+                                                <h3 class="card-title">{% bootstrap_field form_p.e_applied_for_pp show_label=False %} if yes, give Detailes</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field form_p.e_pp_application_no show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field form_p.e_date_of_application show_label=False %}
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>                                           
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card card-primary">
+                                            <div class="card-header">
+                                                <h3 class="card-title"> Countries Travelled </h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    {{ countries_travelled.management_form }}
+                                                    <table class="table table-bordered table-responsive-lg">
+                                                        <thead >
+                                                            <tr>
+                                                            <th>Country Travel</th>
+                                                            <th>Duration of Travel</th>
+                                                            <th>Purpose of Travel</th>
+                                                            </tr>
+                                                        </thead>
+                                                        {% for edu_form in countries_travelled %}
+                                                        <tbody>
+                                                            <tr>
+                                                            <td>{% bootstrap_field edu_form.country_travelled show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.duration_of_travel show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.purpus_of_travel show_label=False %}</td>
+                                                            </tr>                        
+                                                        </tbody>
+                                                        {% endfor %}
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card card-primary">
+                                            <div class="card-header">
+                                                <h3 class="card-title">  {% bootstrap_field form_p.country_refused show_label=False %} if yes, give details: </h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    {{ countries_refused.management_form }}
+                                                    <table class="table table-bordered table-responsive-lg">
+                                                        <thead >
+                                                            <tr>
+                                                            <th>Country</th>
+                                                            <th>Date of Application</th>
+                                                            <th>Type of Visa</th>
+                                                            <th>Reason of Refusal/Denial </th>
+                                                            </tr>
+                                                        </thead>
+                                                        {% for edu_form in countries_refused %}
+                                                        <tbody>
+                                                            <tr>
+                                                            <td>{% bootstrap_field edu_form.country show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.date_of_application show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.type_of_visa show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.resion_of_refused show_label=False %}</td>
+                                                            </tr>                        
+                                                        </tbody>
+                                                        {% endfor %}
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                </div>                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card card-primary">
+                                            <div class="card-header">
+                                                <h3 class="card-title">{% bootstrap_field form_p.e_working_relative show_label=False %} if yes, give Detailes </h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field form_p.e_name_of_relatiove show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field form_p.e_relationship show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field form_p.e_company show_label=False %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                                            
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card card-primary">
+                                            <div class="card-header">
+                                                <h3 class="card-title"> Languages </h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    {{ language_form.management_form }}
+                                                    <table class="table table-bordered table-responsive-lg">
+                                                        <thead >
+                                                            <tr>
+                                                            <th>Language</th>
+                                                            <th>Speek</th>
+                                                            <th>Read</th>
+                                                            <th>Write</th>
+                                                            </tr>
+                                                        </thead>
+                                                        {% for edu_form in language_form  %}
+                                                        <tbody>
+                                                            <tr>
+                                                            <td>{% bootstrap_field edu_form.language show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.speek show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.read show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.write show_label=False %}</td>
+                                                            </tr>                        
+                                                        </tbody>
+                                                        {% endfor %}
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card card-primary">
+                                           <div class="card-header">
+                                                <h3 class="card-title"> Present Address</h3>
+                                            </div>
+                                            {{ present.management_form }} 
+                                            <div class="card-body">                                                
+                                                {% bootstrap_field present.building_apt_name0 show_label=False %}
+                                                {% bootstrap_field present.H_D_Flat_No0 show_label=False %}
+                                                {% bootstrap_field present.street_colony0 show_label=False %}
+                                                {% bootstrap_field present.landmark0 show_label=False %}
+                                                {% bootstrap_field present.city0 show_label=False %}
+                                                {% bootstrap_field present.state0 show_label=False %}
+                                                {% bootstrap_field present.pincode0 show_label=False %}
+                                                {% bootstrap_field present.phonoe0 show_label=False %}                                       
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card card-primary">
+                                           <div class="card-header">
+                                                <h3 class="card-title"> Permanent Address</h3>
+                                            </div> 
+                                            <div class="card-body">
+                                                {% bootstrap_field permanent.building_apt_name1 show_label=False %}
+                                                {% bootstrap_field permanent.H_D_Flat_No1 show_label=False %}
+                                                {% bootstrap_field permanent.street_colony1 show_label=False %}
+                                                {% bootstrap_field permanent.landmark1 show_label=False %}
+                                                {% bootstrap_field permanent.city1 show_label=False %}
+                                                {% bootstrap_field permanent.state1 show_label=False %}
+                                                {% bootstrap_field permanent.pincode1 show_label=False %}
+                                                {% bootstrap_field permanent.phonoe1 show_label=False %}                                                  
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card card-primary">
+                                            <div class="card-header">
+                                                <h3 class="card-title"> Education </h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    {{ edu_form.management_form }}
+                                                    <table class="table table-bordered table-responsive-lg">
+                                                        <thead >
+                                                            <tr>
+                                                            <th>Education</th>
+                                                            <th>College</th>
+                                                            <th>Name of Degree</th>
+                                                            <th>Duration <br>From / To</th>
+                                                            <th>Specialization</th>
+                                                            <th>Percentage</th>
+                                                            <th>Certificates</th>
+                                                            </tr>
+                                                        </thead>
+                                                        {% for edu_form in edu_form  %}
+                                                        <tbody>
+                                                            <tr>
+                                                            <td>{% bootstrap_field edu_form.education show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.college show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.name_of_degree show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.duration_from show_label=False %}{% bootstrap_field edu_form.duration_to show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.specialization show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.percentage show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.certificates show_label=False %}</td>
+                                                            </tr>                        
+                                                        </tbody>
+                                                        {% endfor %}
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                </div>                        
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card card-primary">
+                                            <div class="card-header">
+                                                <h3 class="card-title"> Present/Current Employment </h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    {{ employee_history.management_form }}
+                                                    <table class="table table-bordered table-responsive-lg">
+                                                        <thead >
+                                                            <tr>
+                                                            <th>Name</th>
+                                                            <th>Industry Type</th>
+                                                            <th>Current Designation</th>
+                                                            <th>Duration</th>
+                                                            <th>Starting Salary</th>
+                                                            <th>Current  Salary</th>
+                                                            <th>Reason for Seaking change/lacving</th>
+                                                            <th>Address</th>
+                                                            <th>Phone No.</th>
+                                                            <th>Name and Designation of Supervisor</th>
+                                                            </tr>
+                                                        </thead>
+                                                        {% if employee_history %}
+                                                        <tbody>
+                                                            <tr>
+                                                            <td>{% bootstrap_field employee_history.name show_label=False %}</td>
+                                                            <td>{% bootstrap_field employee_history.industry_type show_label=False %}</td>
+                                                            <td>{% bootstrap_field employee_history.current_designation show_label=False %}</td>
+                                                            <td>{% bootstrap_field employee_history.employee_service_from show_label=False %}{% bootstrap_field employee_history.employee_service_to show_label=False %}</td>
+                                                            <td>{% bootstrap_field employee_history.starting_salary show_label=False %}</td>
+                                                            <td>{% bootstrap_field employee_history.current_salary show_label=False %}</td>
+                                                            <td>{% bootstrap_field employee_history.change_leaving show_label=False %}</td>
+                                                            <td>{% bootstrap_field employee_history.address show_label=False %}</td>
+                                                            <td>{% bootstrap_field employee_history.phonoe show_label=False %}</td>
+                                                            <td>{% bootstrap_field employee_history.supervisor show_label=False %}</td>
+                                                            </tr>                        
+                                                        </tbody>
+                                                        {% endif %}
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card card-primary">
+                                            <div class="card-header">
+                                                <h3 class="card-title"> Previous Employment/Job </h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    {{ previous_Employmen.management_form }}
+                                                    <table class="table table-bordered table-responsive-lg">
+                                                        <thead >
+                                                            <tr>
+                                                            <th>Name</th>
+                                                            <th>Designation</th>
+                                                            <th>Duration</th>
+                                                            <th>Nature of Duties</th>
+                                                            <th>Email</th>
+                                                            <th>Last Salary Drawn</th>
+                                                            <th>Address</th>
+                                                            </tr>
+                                                        </thead>
+                                                        {% if previous_Employment %}
+                                                        <tbody>
+                                                            <tr>
+                                                            <td>{% bootstrap_field previous_Employment.name show_label=False %}</td>
+                                                            <td>{% bootstrap_field previous_Employment.designation show_label=False %}</td>
+                                                            <td>{% bootstrap_field previous_Employment.period_of_service_from show_label=False %}{% bootstrap_field previous_Employment.period_of_service_to show_label=False %}</td>
+                                                            <td>{% bootstrap_field previous_Employment.nature_of_duties show_label=False %}</td>
+                                                            <td>{% bootstrap_field previous_Employment.email show_label=False %}</td>
+                                                            <td>{% bootstrap_field previous_Employment.salary show_label=False %}</td>
+                                                            <td>{% bootstrap_field previous_Employment.address show_label=False %}</td>
+                                                            </tr>                        
+                                                        </tbody>
+                                                        {% endif %}
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card card-primary">
+                                            <div class="card-header">
+                                                <h3 class="card-title"> References (Provide minimum 2 professional references)</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    {{ reference.management_form }}
+                                                    <table class="table table-bordered table-responsive-lg">
+                                                        <thead >
+                                                            <tr>
+                                                            <th>Name</th>
+                                                            <th>Designation</th>
+                                                            <th>Email</th>
+                                                            <th>Phone</th>
+                                                            <th>Nature of Association</th>
+                                                            <th>Address</th>
+                                                            </tr>
+                                                        </thead>
+                                                        {% for edu_form in reference %}
+                                                        <tbody>
+                                                            <tr>
+                                                            <td>{% bootstrap_field edu_form.name show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.designation show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.email show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.phonoe show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.nature_of_association show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.address show_label=False %}</td>
+                                                            </tr>                        
+                                                        </tbody>
+                                                        {% endfor %}
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card card-primary">
+                                            <div class="card-header">
+                                                <h3 class="card-title">{% bootstrap_field form_p.applied show_label=False %} if yes, give Detailes</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    {{ general.management_form }}
+                                                    <table class="table table-bordered table-responsive-lg">
+                                                        <thead >
+                                                            <tr>
+                                                            <th>Name of Company</th>
+                                                            <th>Position Applied For</th>
+                                                            <th>Date of Application</th>
+                                                            <th>Reason for Not Joining</th>
+                                                            </tr>
+                                                        </thead>
+                                                        {% for edu_form in general  %}
+                                                        <tbody>
+                                                            <tr>
+                                                            <td>{% bootstrap_field edu_form.name_of_company show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.position_applied_for show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.date_of_application show_label=False %}</td>
+                                                            <td>{% bootstrap_field edu_form.reason show_label=False %}</td>
+                                                            </tr>                        
+                                                        </tbody>
+                                                        {% endfor %}
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                </div>
+                                <div class="row col-md-12">
+                                    <div class="col-md-6">
+                                        {% bootstrap_field form_p.e_salary_expected show_label=False %} 
+                                    </div>
+                                    <div class="col-md-6">
+                                        {% bootstrap_field form_p.e_joining_time_required show_label=False %} 
+                                    </div>
+                                    <div class="shadow p-3 mb-2 bg-white clo-md-6">
+                                        {% bootstrap_field form_p.e_declaration show_label=False %}                                
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card card-primary">
+                                            <div class="card-header">
+                                                <h3 class="card-title"> YOUR PRESENT EMOLUMENTS (ANNUAL)</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    {{ emoluments.management_form }}
+                                                    <table class="table table-bordered table-responsive-lg">                                                        
+                                                        {% if emoluments %}
+                                                        <tbody>
+                                                            <tr>                                                                
+                                                                <td>{% bootstrap_field emoluments.basic show_label=False %}</td>                                                                
+                                                                <td>{% bootstrap_field emoluments.da show_label=False %}</td>
+                                                                <td>{% bootstrap_field emoluments.cca show_label=False %}</td>                                                                
+                                                                <td>{% bootstrap_field emoluments.hra show_label=False %}</td> 
+                                                            </tr>
+                                                            <tr>                                                                
+                                                                <td>{% bootstrap_field emoluments.conveyance show_label=False %}</td>                                                                
+                                                                <td>{% bootstrap_field emoluments.lta show_label=False %}</td>
+                                                                <td>{% bootstrap_field emoluments.anyother_allowences show_label=False %}</td>                                                                
+                                                                <td>{% bootstrap_field emoluments.cross_income show_label=False %}</td>
+                                                            </tr>
+                                                            <tr>                                                                
+                                                                <td>{% bootstrap_field emoluments.pf show_label=False %}</td>                                                                
+                                                                <td>{% bootstrap_field emoluments.medical show_label=False %}</td>
+                                                                <td>{% bootstrap_field emoluments.insurance show_label=False %}</td>                                                                
+                                                                <td>{% bootstrap_field emoluments.any_other_deductions show_label=False %}</td>
+                                                            </tr>
+                                                            <tr>                                                              
+                                                                <td>{% bootstrap_field emoluments.gross_deduction show_label=False %}</td>                                                                
+                                                                <td>{% bootstrap_field emoluments.net_salary show_label=False %}</td> 
+                                                            </tr>                        
+                                                        </tbody>
+                                                        {% endif %}
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="card card-primary">
+                                        <div style="border:1px solid #ddd;" class="card-header ">
+                                            <h3 class="card-title ">Personal Details (Block letters) </h3>
+                                        </div>
+                                        <div class="card-body">                         
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field persanal_detailForm.name show_label=false %}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field persanal_detailForm.gender show_label=False %}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field persanal_detailForm.father_name show_label=False %}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field persanal_detailForm.husband_name show_label=False %}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field persanal_detailForm.employe_id show_label=False %}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field persanal_detailForm.p_dob show_label=False %}
+                                                </div>
+                                                <div class="col-md-6 " id='datepicker'>
+                                                    {% bootstrap_field persanal_detailForm.p_joining_date show_label=False %}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field persanal_detailForm.joining_location show_label=False %}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    {% bootstrap_field persanal_detailForm.social_security_Number show_label=False %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                {{ associates_addressForm.management_form }}
+                                                <table class="table table-bordered table-responsive">
+                                                    <thead >
+                                                        <tr style="text-align:center;"><h4 >Associates Address Details</h4></tr>
+                                                        <tr>
+                                                        <th>building/apt Number</th>
+                                                        <th>House/Door/Flat Number</th>
+                                                        <th>street/colony Name</th>
+                                                        <th>Landmark </th>
+                                                        <th>City</th>
+                                                        <th>State</th>
+                                                        <th>Pincode</th>
+                                                        <th>Phonoe No.</th>
+                                                        <th>Duration <br>From/To</th>
+                                                        </tr>
+                                                    </thead>
+                                                    {% for edu_form in associates_addressForm  %}
+                                                    <tbody>
+                                                        <tr>
+                                                        <td>{% bootstrap_field edu_form.building_apt_name show_label=False %}</td>
+                                                        <td>{% bootstrap_field edu_form.H_D_Flat_No show_label=False %}</td>
+                                                        <td>{% bootstrap_field edu_form.street_colony show_label=False %}</td>
+                                                        <td>{% bootstrap_field edu_form.landmark show_label=False %}</td>
+                                                        <td>{% bootstrap_field edu_form.city show_label=False %}</td>
+                                                        <td>{% bootstrap_field edu_form.state show_label=False %}</td>
+                                                        <td>{% bootstrap_field edu_form.pincode show_label=False %}</td>
+                                                        <td>{% bootstrap_field edu_form.phonoe show_label=False %}</td>
+                                                        <td>{% bootstrap_field edu_form.duration_of_stay_from show_label=False %}{% bootstrap_field edu_form.duration_of_stay_to show_label=False %}</td>
+                
+                                                        </tr>                        
+                                                    </tbody>
+                                                    {% endfor %}
+                                                </table>
+                                                <h6>Please. Provide the details pertaining to your past all addresses and Employments from the Date of loining of Tech Mahindra Limited</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row col-md-12">
+                                    <div class="card card-primary">
+                                        <div class="card-head border-bottom">
+                                            <h3 style="text-align:center;"> Declaration Form </h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <table class="table table-bordered table-responsive">
+                                                <thead style="text-align: center;">
+                                                    <tr>
+                                                        <th>S.NO</th>
+                                                        <th>New Hire Declaration</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody style="text-align: center;">
+                                                    <tr>
+                                                        <td>
+                                                            1 
+                                                        </td>
+                                                        <td>
+                                                            {% bootstrap_field declaration_form.declaration_1 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_2 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_3 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_4 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            5
+                                                        </td>
+                                                        <td>
+                                                            <div class="border-bottom col-md-12">
+                                                                <b>I have / submitted the following documents</b>
+                                                            </div>
+                                                            <div class="border-bottom col-md-12">
+                                                                {% bootstrap_field declaration_form.declaration_5a show_label=False %}
+                                                            </div>
+                                                            <div class="border-bottom col-md-12">
+                                                                {% bootstrap_field declaration_form.declaration_5b show_label=False %}
+                                                            </div>
+                                                            <div class="border-bottom col-md-12">
+                                                                {% bootstrap_field declaration_form.declaration_5c show_label=False %}
+                                                            </div>
+                                                            <div class="border-bottom col-md-12">
+                                                                {% bootstrap_field declaration_form.declaration_5d show_label=False %}
+                                                            </div>
+                                                            <div class="border-bottom col-md-12">
+                                                                {% bootstrap_field declaration_form.declaration_5e show_label=False %}
+                                                            </div>
+                                                            <div class="border-bottom col-md-12">
+                                                                {% bootstrap_field declaration_form.declaration_5f show_label=False %}
+                                                            </div>
+                                                            <div class="border-bottom col-md-12">
+                                                                {% bootstrap_field declaration_form.declaration_5g show_label=False %}
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                {% bootstrap_field declaration_form.declaration_5h show_label=False %}
+                                                            </div>                                
+                                                        </td>
+                                                    </tr>
+                                                    <tr>                                            
+                                                        <td>6
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_6 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>7
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_7 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>8
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_8 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>9
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_9 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_10 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>11
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_11 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>12
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_12 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>13
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_13 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>14
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_14 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>15
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_15 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>16
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_16 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>17
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_17 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>18
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_18 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>19
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_19 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>20
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_20 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>21
+                                                        </td>
+                                                        <td>{% bootstrap_field declaration_form.declaration_21 show_label=False %}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            
+                                        </div>
+                                    </div>                            
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card card-primary">
+                                            <div style="border-bottom:1px solid #ddd;" class="card-header">
+                                                <h3 class="text-center" class="card-title">Candidate's Acceptance Form</h3>
+                                                <p class="text-center">(To be Filled in by Recruiter & Signed by Candidate)</p>
+                                            </div>
+                                            <div class="card-body">                         
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.name show_label=false %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.application_id show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.source show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.name_of_source show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.officer_code show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.employee_class show_label=False %}
+                                                    </div>
+                                                    <!-- Relevent Experience Fixation -->
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.type_of_experience show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.total_experience show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.relevant_experience show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.remarks show_label=False %}
+                                                    </div>
+                                                    <!-- Employment & Fitment Related Information -->
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.current_location show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.location_constraints show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.location_preference show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.is_passport_valid show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.ready_to_travel show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.visa_rejected show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.offered_ctc_excluding show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.offered_ctc_including show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.expected_ctc show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.current_ctc show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.job_role show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.type_of_employment show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.contract_start_date show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.contract_duration show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.joining_date show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.joining_location show_label=False %}
+                                                    </div>
+                                                    <!-- Commitments & Relevant Information -->
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.guest_house_accommodation show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.willing_work show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.notice_period show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.expected_joining_date show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.comments show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.declaration show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.recruter_name show_label=False %}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {% bootstrap_field candidate_acceptance.authority_name show_label=False %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fixed-action-btn">
+                                    <button type="submit", class="btn btn-success"> Submit</button>
+                                    <a href="{% url 'home' %}" class="btn btn-danger">Cancel</a>
+                                </div>
+                            </form>
+                        {% else %}
+                            <h1>not found</h1>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- {% include 'student/paginator.html' with page_obj=form_p show_label=False %} -->
+{% endblock %}
+
+{% block extra_js %}
+
+
+<script type="text/javascript">
+$(function() {
+        $('[data-inputmask]').inputmask()
+    });
+
+$("select#id_e_gender.form-control option[value='']").html('<option>Gender</option>'); //dropdown default value set
+$("select#id_e_marital_status.form-control option[value='']").html('<option>Married</option>');
+$("select#id_gender.form-control option[value='']").html('<option>Gender</option>');
+$("select#id_source.form-control option[value='']").html('<option>Name of Source</option>');
+$("select#id_officer_code.form-control option[value='']").html('<option>Officer Code</option>');
+$("select#id_employee_class.form-control option[value='']").html('<option>Employee Class</option>');
+$("select#id_type_of_experience.form-control option[value='']").html('<option>Type Of Experience</option>');
+$("select#id_location_constraints.form-control option[value='']").html('<option>Location Constraints</option>');
+$("select#id_is_passport_valid.form-control option[value='']").html('<option>Is Passport Valid ?</option>');
+$("select#id_ready_to_travel.form-control option[value='']").html('<option>Ready To Travel (including Onsite) ?</option>');
+$("select#id_visa_rejected.form-control option[value='']").html('<option>Was visa ever rejected ?</option>');
+$("select#id_guest_house_accommodation.form-control option[value='']").html('<option>Guest House Accommodation ?</option>');
+$("select#id_willing_work.form-control option[value='']").html('<option>Willing to work in Shifts ? 24x7 </option>');   
+$("select#id_type_of_employment.form-control option[value='']").html('<option>Type of Employment</option>');           
+
+</script>
+
+
+
+
+{% endblock %}

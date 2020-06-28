@@ -1,0 +1,151 @@
+{% load adminlte_helpers i18n %}
+{% load static %}<!DOCTYPE html>
+{# Load the tag library #}
+{% load bootstrap4  %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css  %}
+
+{% bootstrap_javascript jquery='full' %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block title_outer %}
+        <title>{% block title %}{{ techMahi.com }}{% endblock %}</title>
+    {% endblock %}
+
+    {% block meta %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">    
+    
+                
+        {# Include FontAwesome; required for icon display #}
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
+
+        
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+    {% endblock %}
+   
+
+
+    {% block stylesheets %}
+        {% include 'adminlte/lib/_styles.html' %}
+    {% endblock %}
+    <style type="text/css">
+
+    textarea#id_comments.form-control{
+        height: 5em;
+    }
+    textarea#id_form-0-address.form-control{
+        height: 3em;
+    }
+    textarea#id_form-1-address.form-control{
+        height: 3em;
+    }
+    textarea#id_form-2-address.form-control{
+        height: 3em;
+    }
+
+    textarea#id_address.form-control {
+        height: 5em;
+    }
+
+    textarea#id_e_premanent_address.form-control {
+        height: 5em;
+    }
+    textarea#id_e_present_address.form-control {
+        height: 5em;
+    }
+    textarea#id_reference_set-0-address.form-control, textarea#id_reference_set-1-address.form-control, textarea#id_reference_set-2-address.form-control{
+        height: 3em;
+    }
+</style>
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="hold-transition sidebar-mini {% block body_class %}{% block bodyclass %}{% endblock %}{% endblock %}">
+
+{% block body %}
+    <div class="wrapper">
+        
+        {% block nav_header %}
+        {% endblock %}
+
+
+        {% block nav_sidebar %}
+        {% endblock %}
+
+    
+        {% block content_wrapper %}
+        <div class="content-wrapper">
+            {% block content_header %}
+                <section >                    
+                    {% block no_heading %}
+                        <h1 class="border">
+                            {% block page_name %} {% endblock %}
+                            <div class="header-actions">
+                                {% block page_actions %} {% endblock %}
+                            </div>
+                            {% block no_description %}
+                            <small>{% block page_description %} {% endblock %}</small>
+                            {% endblock %}
+                        </h1>
+                        {% block breadcrumbs %}
+                            {# Breadcrumb implementation left to developers #}                            
+                        {% endblock %}
+                    {% endblock no_heading %}
+                </section>
+            {% endblock %}
+
+            {% block content_outer %}
+            <section class="content">
+                {% block messages %}
+                    {% include 'adminlte/lib/_messages.html' %}                    
+                {% endblock %}
+
+                {% block content_block_wrap %}
+                    {% block content %}                     
+                    {% endblock %}
+                {% endblock %}
+            </section>
+            {% endblock %}
+
+        </div>
+        {% endblock content_wrapper %}
+        
+        {% block nav_footer %}
+            {% include 'adminlte/lib/_main_footer.html' %}
+        {% endblock %}
+
+    </div>
+
+
+    
+    
+{% endblock body %}
+
+{% block javascript %}
+{% include 'adminlte/lib/_scripts.html' %}
+ <!-- InputMask -->
+ <script src="{% static 'AdminLTE3/plugins/moment/moment.min.js' %}"></script>
+ <script src="{% static 'AdminLTE3/plugins/inputmask/min/jquery.inputmask.bundle.min.js' %}"></script>
+
+{% endblock %}
+
+
+{% block extra_js %}
+   
+
+{% endblock %}
+
+{% block extra_foot %}{% endblock %}
+
+
+
+</body>
+</html>

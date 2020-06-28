@@ -1,0 +1,1346 @@
+{% extends 'staff/dashboard.html' %}
+
+{% load static %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+
+    <section class="content pt-3">
+        <div class="container-fluid"> 
+            <div class="card card-default">
+                <div class="card-header with-border">
+                    <h3 style="text-align:center;">Application</h3>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="col-md-12">                                                  
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <div class="text-center">
+                                                <h1> Tech Mahindra Limited</h1>
+                                                <p> Sharda Center, zoff Karve Roaf, Pune-411 004</p>
+                                                <h4> Application for Employment</h4>
+                                            </div>
+                                        </div>                                  
+                                        <div style="text-align: center;" class="col-md-2">                                         
+                                            {% if form_p.e_photo %}
+                                            <img src="{{ form_p.e_photo.url }}" style="width:100px;" />                                               
+                                            {% else %}
+                                            <img style="width:100%; border-radius:5px;" src='{% static "admin-lte/dist/img/avatar5.png" %}' id="image_preview" class="img-responsive">                                                        
+                                            {% endif %}                                    
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </div>                                                                             
+                        </div>                         
+                        <div class="row">
+                            <div class="col-md-12">
+                            <div class="card card-primary ">
+                                <div style="border-bottom:1px solid #ddd;" class="card-header">
+                                    <h3 class="card-title">Persional Information</h3>
+                                </div>
+                                <div class="card-body">                         
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Name Mr./Ms.</label>
+                                                <div class="form-control">{{ form_p.e_name|title }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Gender</label>
+                                                <div class="form-control">{{ form_p.e_gender }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Father Name</label>
+                                                <div class="form-control">{{ form_p.e_father_name }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Mother Name</label>
+                                                <div class="form-control">{{ form_p.e_mother_name }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Date of birth</label>
+                                                <div class="form-control">{{ form_p.e_dob }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Place of Birth</label>
+                                                <div class="form-control">{{ form_p.e_place_of_birth }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Marital Status</label>
+                                                <div class="form-control">{{ form_p.e_marital_status }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Nationality</label>
+                                                <div class="form-control">{{ form_p.e_nationality }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <div class="form-control">{{ form_p.e_email }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>                     
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="card card-primary">
+                                    <div style="border-bottom:1px solid #ddd;" class="card-header">
+                                        <h3 class="card-title">Passport Detailes</h4>
+                                    </div>
+                                    <div class="card-body">                                            
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Passport No</label>
+                                                    <div class="form-control">{{ form_p.e_passport_no }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Place of Passport issue</label>
+                                                    <div class="form-control">{{ form_p.e_place_of_pp_issue }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">    
+                                                <div class="form-group">
+                                                    <label>Date of issue</label>
+                                                    <div class="form-control">{{ form_p.e_date_of_pp_issue }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Date of Expiry</label>
+                                                    <div class="form-control">{{ form_p.e_date_of_pp_expiry }}</div>
+                                                </div>
+                                            </div>
+                                        </div>                                     
+                                    </div>                                                
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-primary">
+                                    <div style="border-bottom:1px solid #ddd;" class="card-header">
+                                        <h3 class="card-title"><div class="form-group">
+                                            <label>Applied for Passport</label>
+                                            <div class="form-control">{{ form_p.e_applied_for_pp|yesno }}</div>
+                                        </div></h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Application No</label>
+                                                    <div class="form-control">{{ form_p.e_pp_application_no }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Date of Application</label>
+                                                    <div class="form-control">{{ form_p.e_date_of_application }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                                           
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title"> Countries Travelled </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            {{ edu_form.management_form }}
+                                            <table class="table table-bordered table-responsive-sm">
+                                                <thead >
+                                                    <tr>
+                                                    <th>Country Travel</th>
+                                                    <th>Duration of Travel</th>
+                                                    <th>Purpose of Travel</th>
+                                                    </tr>
+                                                </thead>
+                                                {% for edu_form in countries_travelled %}
+                                                <tbody>
+                                                    <tr>
+                                                    <td>{{ edu_form.country_travelled }}</td>
+                                                    <td>{{ edu_form.duration_of_travel }}</td>
+                                                    <td>{{ edu_form.purpus_of_travel }}</td>
+                                                    </tr>                        
+                                                </tbody>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>                                       
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title"> 
+                                            <div class="form-group">
+                                                <label>Country Refusal</label>
+                                                <div class="form-control">{{ form_p.country_refused|yesno }}</div>
+                                            </div>   
+                                        </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            {{ edu_form.management_form }}
+                                            <table class="table table-bordered table-responsive-sm ">
+                                                <thead >
+                                                    <tr>
+                                                    <th>Country</th>
+                                                    <th>Date of Application</th>
+                                                    <th>Type of Visa</th>
+                                                    <th>Reason of Refusal/Denial </th>
+                                                    </tr>
+                                                </thead>
+                                                {% for edu_form in countries_refused %}
+                                                <tbody>
+                                                    <tr>
+                                                    <td>{{ edu_form.country }}</td>
+                                                    <td>{{ edu_form.date_of_application }}</td>
+                                                    <td>{{ edu_form.type_of_visa }}</td>
+                                                    <td>{{ edu_form.resion_of_refused }}</td>
+                                                    </tr>                        
+                                                </tbody>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>                                       
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            <div class="form-group">
+                                                <label>Workin relative<div class="form-control">{{  form_p.e_working_relative|yesno }}</div></label>
+                                            </div>
+                                        </h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Gender</label>
+                                                    <div class="form-control">{{  form_p.e_name_of_relatiove }}</div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Gender</label>
+                                                    <div class="form-control">{{  form_p.e_relationship }}</div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Gender</label>
+                                                    <div class="form-control">{{  form_p.e_company }}</div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                            
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title"> Languages </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            {{ edu_form.management_form }}
+                                            <table class="table table-bordered table-responsive-sm">
+                                                <thead >
+                                                    <tr>
+                                                    <th>Language</th>
+                                                    <th>Speek</th>
+                                                    <th>Read</th>
+                                                    <th>Write</th>
+                                                    </tr>
+                                                </thead>
+                                                {% for edu_form in language_form  %}
+                                                <tbody>
+                                                    <tr>
+                                                    <td>{{  edu_form.language }}</td>
+                                                    <td>{{  edu_form.speek|yesno }}</td>
+                                                    <td>{{  edu_form.read|yesno }}</td>
+                                                    <td>{{  edu_form.write|yesno }}</td>
+                                                    </tr>                        
+                                                </tbody>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>                                       
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title"> Present Address</h4>
+                                    </div> 
+                                    <div class="card-body">                                                
+                                        {{ present.building_apt_name0|title }},
+                                        {{ present.H_D_Flat_No0 }},
+                                        {{ present.street_colony0 }},
+                                        {{ present.landmark0 }},
+                                        {{ present.city0 }},
+                                        {{ present.state0 }},
+                                        {{ present.pincode0 }},
+                                        {{ present.phonoe0 }}.                                      
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title"> Permanent Address</h4>
+                                    </div> 
+                                    <div class="card-body">
+                                        {{ permanent.building_apt_name1|title }},
+                                        {{ permanent.H_D_Flat_No1 }},
+                                        {{ permanent.street_colony1 }},
+                                        {{ permanent.landmark1 }},
+                                        {{ permanent.city1 }},
+                                        {{ permanent.state1 }},
+                                        {{ permanent.pincode1 }},
+                                        {{ permanent.phonoe1 }}.                                                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <div class="card card-primary">
+                                        <div class="card-header">
+                                            <h3 class="card-title"> Education </h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <table class="table table-bordered table-responsive-sm ">
+                                                    <thead >
+                                                        <tr>
+                                                        <th>Education</th>
+                                                        <th>College</th>
+                                                        <th>Name of Degree</th>
+                                                        <th>Duration</th>
+                                                        <th>Specialization</th>
+                                                        <th>Percentage</th>
+                                                        </tr>
+                                                    </thead> 
+                                                    {% for form_p in form %}                                    
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>{{ form_p.education }}</td>
+                                                            <td>{{ form_p.college }}</td>
+                                                            <td>{{ form_p.name_of_degree }}</td>
+                                                            <td>
+                                                                <table>                                                                    
+                                                                    <tbody>
+                                                                        
+                                                                        {{ form_p.duration_from }} <br>
+                                                                        {{ form_p.duration_to }}
+                                                                        
+                                                                    </tbody>                                                                
+                                                                </table>                                                                
+                                                            </td>
+                                                            <td>{{ form_p.specialization }}</td>
+                                                            <td>{{ form_p.percentage }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                    {% endfor %}
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                        
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title"> Present/Current Employment </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            {{ edu_form.management_form }}
+                                            <table class="table table-bordered table-responsive-sm">
+                                                <thead >
+                                                    <tr>
+                                                    <th>Name</th>
+                                                    <th>Industry Type</th>
+                                                    <th>Current Designation</th>
+                                                    <th>Duration</th>
+                                                    <th>Starting Salary</th>
+                                                    <th>Current  Salary</th>
+                                                    <th>Reason for Seaking change/lacving</th>
+                                                    <th>Address</th>
+                                                    <th>Phone No.</th>
+                                                    <th>Name and Designation of Supervisor</th>
+                                                    </tr>
+                                                </thead>
+                                                {% for employee_history in employee_history %}
+                                                <tbody>
+                                                    <tr>
+                                                    <td>{{ employee_history.name }}</td>
+                                                    <td>{{ employee_history.industry_type }}</td>
+                                                    <td>{{ employee_history.current_designation }}</td>
+                                                    <td>{{ employee_history.employee_service_from }}{{ employee_history.employee_service_to }}</td>
+                                                    <td>{{ employee_history.starting_salary }}</td>
+                                                    <td>{{ employee_history.current_salary }}</td>
+                                                    <td>{{ employee_history.change_leaving }}</td>
+                                                    <td>{{ employee_history.address }}</td>
+                                                    <td>{{ employee_history.phonoe }}</td>
+                                                    <td>{{ employee_history.supervisor }}</td>
+                                                    </tr>                        
+                                                </tbody>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>                                       
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title"> Previous Employment/Job </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <table class="table table-bordered table-responsive-sm ">
+                                                <thead >
+                                                    <tr>
+                                                    <th>Name</th>
+                                                    <th>Designation</th>
+                                                    <th>Duration</th>
+                                                    <th>Nature of Duties</th>
+                                                    <th>Email</th>
+                                                    <th>Last Salary Drawn</th>
+                                                    <th>Address</th>
+                                                    </tr>
+                                                </thead>
+                                                {% for previous_Employment in previous_Employment %}
+                                                <tbody>
+                                                    <tr>
+                                                    <td>{{ previous_Employment.name }}</td>
+                                                    <td>{{ previous_Employment.designation }}</td>
+                                                    <td>{{ previous_Employment.period_of_service_from }}{{ previous_Employment.period_of_service_to }}</td>
+                                                    <td>{{ previous_Employment.nature_of_duties }}</td>
+                                                    <td>{{ previous_Employment.email }}</td>
+                                                    <td>{{ previous_Employment.salary }}</td>
+                                                    <td>{{ previous_Employment.address }}</td>
+                                                    </tr>                        
+                                                </tbody>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>                                       
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title"> References (Provide minimum 2 professional references)</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            {{ edu_form.management_form }}
+                                            <table class="table table-bordered table-responsive-sm ">
+                                                <thead >
+                                                    <tr>
+                                                    <th>Name</th>
+                                                    <th>Designation</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th>Nature of Association</th>
+                                                    <th>Address</th>
+                                                    </tr>
+                                                </thead>
+                                                {% for edu_form in reference %}
+                                                <tbody>
+                                                    <tr>
+                                                    <td>{{ edu_form.name }}</td>
+                                                    <td>{{ edu_form.designation }}</td>
+                                                    <td>{{ edu_form.email }}</td>
+                                                    <td>{{ edu_form.phonoe }}</td>
+                                                    <td>{{ edu_form.nature_of_association }}</td>
+                                                    <td>{{ edu_form.address }}</td>
+                                                    </tr>                        
+                                                </tbody>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>                                       
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">{{ form_p.applied }} if yes, give Detailes</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            {{ edu_form.management_form }}
+                                            <table class="table table-bordered table-responsive-sm ">
+                                                <thead >
+                                                    <tr>
+                                                    <th>Name of Company</th>
+                                                    <th>Position Applied For</th>
+                                                    <th>Date of Application</th>
+                                                    <th>Reason for Not Joining</th>
+                                                    </tr>
+                                                </thead>
+                                                {% for edu_form in general  %}
+                                                <tbody>
+                                                    <tr>
+                                                    <td>{{ edu_form.name_of_company }}</td>
+                                                    <td>{{ edu_form.position_applied_for }}</td>
+                                                    <td>{{ edu_form.date_of_application }}</td>
+                                                    <td>{{ edu_form.reason }}</td>
+                                                    </tr>                        
+                                                </tbody>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>                                       
+                            </div>
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Salary Expected</label>
+                                    <div class="form-control">{{ form_p.e_salary_expected }}</div>
+                                </div>
+                                 
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Joining Time Required</label>
+                                    <div class="form-control">{{ form_p.e_joining_time_required }}</div>
+                                </div>
+                                 
+                            </div>
+                            <div class="shadow p-3 mb-2 bg-white clo-md-6">
+                                <div class="form-group">
+                                    <label>I certify that: \n 1. The information furnished above is factually correct and subject to verification by Tech Mahindra Ltd. 2. lam at present in sound mental and physical condition to undertake employment with Tech Mahindra Ltd. 3. I accept that an appointment given to me on this basis can be revoked, if any information has been misstated or unstatedWorkin relative</label>
+                                    <div class="form-control">{{ form_p.e_declaration|yesno }}</div>
+                                </div>
+                                                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title"> YOUR PRESENT EMOLUMENTS (ANNUAL)</h3>
+                                    </div>
+                                    <div class="card-body card-responsive">
+                                        <div class="row">
+                                            {{ emoluments.management_form }}
+                                            <table class="table table-bordered table-responsive-sm ">                                                        
+                                                {% for emoluments in emoluments %}
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Basic</label>
+                                                        <div class="form-control">{{ emoluments.basic }}</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>DA</label>
+                                                        <div class="form-control">{{ emoluments.da }}</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>CCA</label>
+                                                        <div class="form-control">{{ emoluments.cca }}</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>HRA</label>
+                                                        <div class="form-control">{{ emoluments.hra }}</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Conveyance</label>
+                                                        <div class="form-control">{{ emoluments.conveyance }}</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>LTA</label>
+                                                        <div class="form-control">{{ emoluments.lta }}</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Anyother</label>
+                                                        <div class="form-control">{{ emoluments.anyother_allowences }}</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Gross Income</label>
+                                                        <div class="form-control">{{ emoluments.cross_income }}</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>PF</label>
+                                                        <div class="form-control">{{ emoluments.pf }}</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Medical</label>
+                                                        <div class="form-control">{{ emoluments.medical }}</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Insurance</label>
+                                                        <div class="form-control">{{ emoluments.insurance }}</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Any Other Deduction</label>
+                                                        <div class="form-control">{{ emoluments.any_other_deductions }}</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Gross Deduction</label>
+                                                        <div class="form-control">{{ emoluments.gross_deduction }}</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Net Salary per Annum</label>
+                                                        <div class="form-control">{{ emoluments.net_salary }}</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                {% empty %}
+                                                    <h4>No Data</h4>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>                                       
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div style="border:1px solid #ddd;" class="card-header ">
+                                    <h3 class="card-title ">Personal Details (Block letters) </h4>
+                                </div>
+                                <div class="card-body">                         
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            {{ persanal_detailForm.name }}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {{ persanal_detailForm.gender }}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {{ persanal_detailForm.father_name }}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {{ persanal_detailForm.husband_name }}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {{ persanal_detailForm.employe_id }}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {{ persanal_detailForm.dob }}
+                                        </div>
+                                        <div class="col-md-6 ">
+                                            {{ persanal_detailForm.joining_date }}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {{ persanal_detailForm.joining_location }}
+                                        </div>
+                                        <div class="col-md-6">
+                                            {{ persanal_detailForm.social_security_Number }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        {{ edu_form.management_form }}
+                                        <table class="table table-bordered table-responsive-sm ">
+                                            <thead >
+                                                <tr><h4 class="text-center" class="text-right">Associates Address Details</h4></tr>
+                                                <tr>
+                                                <th>building/apt Number</th>
+                                                <th>House/Door/Flat Number</th>
+                                                <th>street/colony Name</th>
+                                                <th>Landmark </th>
+                                                <th>City</th>
+                                                <th>State</th>
+                                                <th>Pincode</th>
+                                                <th>Phonoe No.</th>
+                                                <th>Duration <br>From/To</th>
+                                                </tr>
+                                            </thead>
+                                            {% for edu_form in associates_addressForm  %}
+                                            <tbody>
+                                                <tr>
+                                                <td>{{ edu_form.building_apt_name }}</td>
+                                                <td>{{ edu_form.H_D_Flat_No }}</td>
+                                                <td>{{ edu_form.street_colony }}</td>
+                                                <td>{{ edu_form.landmark }}</td>
+                                                <td>{{ edu_form.city }}</td>
+                                                <td>{{ edu_form.state }}</td>
+                                                <td>{{ edu_form.pincode }}</td>
+                                                <td>{{ edu_form.phonoe }}</td>
+                                                <td>{{ edu_form.duration_of_stay_from }}{{ edu_form.duration_of_stay_to }}</td>
+
+                                                </tr>                        
+                                            </tbody>
+                                            {% endfor %}
+                                        </table>
+                                        <h6>Please. Provide the details pertaining to your past all addresses and Employments from the Date of loining of Tech Mahindra Limited</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="card card-primary">
+                                <div class="card-head border-bottom">
+                                    <h3 style="text-align:center;"> Declaration Form </h3>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-bordered table-responsive-sm ">
+                                        <thead style="text-align: center;">
+                                            <tr>
+                                                <th>S.NO</th>
+                                                <th>New Hire Declaration</th>
+                                                <th>Agree</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="text-align: center;">
+                                            <tr>
+                                                <td>
+                                                    <h5>1</h5> 
+                                                </td>
+                                                <td>
+                                                    My resumeis a trusted document that confirms the authenticity of my assignments, education & other credentials and will be used to decide my remuneration (needs to be supported by documentation). The same is true to my knowledge and has not been modified in any way by any employee or channel partner. I also acknowledge the fact completely without any exception that iflam found to have misrepresented or withheld any information, it will lead to disqualification of my candidature permanentlyor termination of employment with immediate effect.
+                                                </td>
+                                                <td>
+                                                    <h5>{{ declaration_form.declaration_1|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>2</h5>
+                                                </td>
+                                                <td>The details in my resume/application form will be used to complete a reference check which is a process comprising criminal antecedents, previous employments & address verifications. (If you feel your resume has a discrepancy, then please bring it to the notice of the Talent Acquisition Team)
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_2|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>3</h5>
+                                                </td>
+                                                <td>I Thereby confirm that I have not paid anything incash or kind to any employee/affiliates/vendors of Tech Mahindra Ltd./Tech Mahindra Business Services Ltd. to get my job offer
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_3|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>4</h5>
+                                                </td>
+                                                <td>I Thereby declare that I'm not a defaulter with any of the banks operating in India
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_4|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h5>5</h5>
+                                                </td>
+                                                <td >
+                                                    <div class="border-bottom col-md-12">
+                                                        <b>I have / submitted the following documents </b>
+                                                    </div>
+                                                    <div class="border-bottom p-md-1 col-md-12">
+                                                        HSC/Graduation Mark sheet
+                                                    </div>
+                                                    <div class="border-bottom p-md-1 col-md-12">
+                                                        Offer Letter (previous employer/s)
+                                                    </div>
+                                                    <div class="border-bottom p-md-1 col-md-12">
+                                                        Experience Letter (previous employer/s)
+                                                    </div>
+                                                    <div class="border-bottom p-md-1 col-md-12">
+                                                        Salary/Bank Statements (last 3 Months - last/current employer)
+                                                    </div>
+                                                    <div class="border-bottom p-md-1 col-md-12">
+                                                        PAN Card
+                                                    </div>
+                                                    <div class="border-bottom p-md-1 col-md-12">
+                                                        Address Proof
+                                                    </div>
+                                                    <div class="border-bottom p-md-1 col-md-12">
+                                                        Date of Birth Proof
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        Photo ID Proof
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="border-bottom col-md-12">
+                                                        ...
+                                                    </div>
+                                                    <div class="border-bottom col-md-12">
+                                                       <h5>{{ declaration_form.declaration_5a|yesno }}</h5>
+                                                    </div>
+                                                    <div class="border-bottom col-md-12">
+                                                       <h5>{{ declaration_form.declaration_5b|yesno }}</h5> 
+                                                    </div>
+                                                    <div class="border-bottom col-md-12">
+                                                        <h5>{{ declaration_form.declaration_5c|yesno }}</h5>
+                                                    </div>
+                                                    <div class="border-bottom col-md-12">
+                                                        <h5>{{ declaration_form.declaration_5d|yesno }}</h5>
+                                                    </div>
+                                                    <div class="border-bottom col-md-12">
+                                                        <h5>{{ declaration_form.declaration_5e|yesno }}</h5>
+                                                    </div>
+                                                    <div class="border-bottom col-md-12">
+                                                        <h5>{{ declaration_form.declaration_5f|yesno }}</h5>
+                                                    </div>
+                                                    <div class="border-bottom col-md-12">
+                                                        <h5>{{ declaration_form.declaration_5g|yesno }}</h5>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <h5>{{ declaration_form.declaration_5h|yesno }}</h5>
+                                                    </div>                                
+                                                </td>
+                                            </tr>
+                                            <tr>                                            
+                                                <td><h5>6</h5>
+                                                </td>
+                                                <td>Self-attested photocopies of Candidate documents willbe used for Internal checks and Background Verification purpose hence will not be returned.
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_6|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>7</h5>
+                                                </td>
+                                                <td> I live within Tech Mahindra Ltd. /Tech Mahindra Business Services Ltd. Transport boundaries and have confirmed the same with the recruiting SPOC: (If not then please respond to the statement below)
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_7|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>8</h5>
+                                                </td>
+                                                <td>If I live beyond the above mentioned transport boundaries I am willing to relocate. Note: Tech Mahindra Ltd./ Tech Mahindra Business Services Ltd. will not entertain any request for Transport outside the transport boundaries during your tenure.
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_8|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>9</h5>
+                                                </td>
+                                                <td> I am aware of the transport deduction in casel avail the company transport(For Hyderabad/Noida/Chandigarh Only) 
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_9|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>10</h5>
+                                                </td>
+                                                <td>I am willing to work in 24*7 (rotational shifts as per the business need) with split weekly offs
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_10|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>11</h5>
+                                                </td>
+                                                <td>Notwithstanding anything to the contrarystated elsewhere in the employment contract, I understand that I cannot availanyleaves in the first 6 months of employment.
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_11|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>12</h5>
+                                                </td>
+                                                <td>I will adhere to theinduction/Trainingshift timings / office working hoursincluding but not limited to Log-in/Logout and will comply with the same. I shall not violate the same for reason whatsoever including but not limited to religious activities.
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_12|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>13</h5>
+                                                </td>
+                                                <td>I hereby declare that I'm not a Full time/ Part Timeregular college student and would not requireleaves for any exams forthe next 6 months. I admit I have no plans to pursue further studies andl do not have any backlogs of exams pending.
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_13|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>14</h5>
+                                                </td>
+                                                <td> I agree that I do not suffer from any medical condition that will hinder my On Job performance.
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_14|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>15</h5>
+                                                </td>
+                                                <td> I am not required to undertake any planned hospitalization for any medical conditioninthe next 6 months.
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_15|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>16</h5>
+                                                </td>
+                                                <td>I understand that I will be eligible for any IJP/growth only posts 18 months (minimum) from my date of joining.
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_16|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>17</h5>
+                                                </td>
+                                                <td> I have not been or notlisted by any government agency as being barred, suspended, proposed for suspension or debarment, or otherwise ineligible for participation in any government procurement programmes or contracts.
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_17|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>18</h5>
+                                                </td>
+                                                <td>I have not at any time been found by a courtin any jurisdiction to have engagedin any offence involving bribery, corruption or similar activity.
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_18|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>19</h5>
+                                                </td>
+                                                <td>To the best of my knowledge, I have at any time not been investigated or been suspected in anyjurisdiction of having engagedin any corrupt or other similar activity.
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_19|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>20</h5>
+                                                </td>
+                                                <td> I am not a government Official; or officials of a foreign political party or any candidate for any foreign political office or other persons who might assert a corruptor illegal influence on behalf of either party to this Agreement or on behalf of principals, directors, employees, partners, consultants, agents, representatives, officers or shareholders of any existing or potential customer; andl will immediately notify Tech Mahindra Ltd. /Tech Mahindra Business Services Ltd. in writingifl become aware of anybreach of the above clauses.
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_20|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h5>21</h5>
+                                                </td>
+                                                <td> I hereby declare to comply with the Business Data Protection policy of Tech Mahindra Ltd. / Tech Mahindra Business Services Ltd. which prohibits the usage of mobile phones, tablets, phablets or any other similar device on the operations floor & other work related areas a part from cafeterias/snacketerias. These devices have to be keptin switched off mode (applicable to Advisors and TC/Execs)
+                                                </td>
+                                                <td><h5>{{ declaration_form.declaration_21|yesno }}</h5>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                </div>
+                            </div>                            
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div style="border-bottom:1px solid #ddd;" class="card-header">
+                                    <h3 class="text-center" class="card-title">Candidate's Acceptance Form</h4>
+                                    <p class="text-center">(To be Filled in by Recruiter & Signed by Candidate)</p>
+                                </div>
+                                <div class="card-body">                        
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <div class="form-control">{{ candidate_acceptance.name }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Application ID</label>
+                                                <div class="form-control">{{ candidate_acceptance.application_id }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Source</label>
+                                                <div class="form-control">{{ candidate_acceptance.source }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Name of Source</label>
+                                                <div class="form-control">{{ candidate_acceptance.name_of_source }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Officee Code</label>
+                                                <div class="form-control">{{ candidate_acceptance.officer_code }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Employee Class</label>
+                                                <div class="form-control">{{ candidate_acceptance.employee_class }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <!-- Relevent Experience Fixation -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Type of Experience</label>
+                                                <div class="form-control">{{ candidate_acceptance.type_of_experience }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Total Experience</label>
+                                                <div class="form-control">{{ candidate_acceptance.total_experience }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Revelant Experience</label>
+                                                <div class="form-control">{{ candidate_acceptance.relevant_experience }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Remarks</label>
+                                                <div class="form-control">{{ candidate_acceptance.remarks }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <!-- Employment & Fitment Related Information -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Current Location</label>
+                                                <div class="form-control">{{ candidate_acceptance.current_location }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Location Constraints</label>
+                                                <div class="form-control">{{ candidate_acceptance.location_constraints }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Location Preference</label>
+                                                <div class="form-control">{{ candidate_acceptance.location_preference }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Is Passport valid ?</label>
+                                                <div class="form-control">{{ candidate_acceptance.is_passport_valid }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Ready to Travel (including Onsite)?</label>
+                                                <div class="form-control">{{ candidate_acceptance.ready_to_travel }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Was visa ever rejected ?</label>
+                                                <div class="form-control">{{ candidate_acceptance.visa_rejected }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Offered CTC (excluding Gratuity & Insurance)</label>
+                                                <div class="form-control">{{ candidate_acceptance.offered_ctc_excluding }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Offered CTC (including Gratuity & Insurance)</label>
+                                                <div class="form-control">{{ candidate_acceptance.offered_ctc_including }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Expected CTC (Annual)</label>
+                                                <div class="form-control">{{ candidate_acceptance.expected_ctc }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Current CTC (Annual)</label>
+                                                <div class="form-control">{{ candidate_acceptance.current_ctc }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Proposed Band & Job Role/ Designation</label>
+                                                <div class="form-control">{{ candidate_acceptance.job_role }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Type of Employment</label>
+                                                <div class="form-control">{{ candidate_acceptance.type_of_employment }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Contract Start Date</label>
+                                                <div class="form-control">{{ candidate_acceptance.contract_start_date }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Contract Duration (in months)</label>
+                                                <div class="form-control">{{ candidate_acceptance.contract_duration }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Joining Date</label>
+                                                <div class="form-control">{{ candidate_acceptance.joining_date }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Joining Location</label>
+                                                <div class="form-control">{{ candidate_acceptance.joining_location }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <!-- Commitments & Relevant Information -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Guest House Accommodation ?</label>
+                                                <div class="form-control">{{ candidate_acceptance.guest_house_accommodation }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Willing to work in Shifts ? 24x7</label>
+                                                <div class="form-control">{{ candidate_acceptance.willing_work }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Notice Period in Months</label>
+                                                <div class="form-control">{{ candidate_acceptance.notice_period }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Expected Date Of Joining</label>
+                                                <div class="form-control">{{ candidate_acceptance.expected_joining_date }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Any Other Commitment(s) (Pls specify here)</label>
+                                                <div class="form-control">{{ candidate_acceptance.comments }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="shadow p-3 mb-2 bg-white col-md-12">
+                                            <div class="form-group">
+                                                <label>I hereby, confirm that I understand all above details/information and I have no observation of any kind on any of the above information/commitments.</label>
+                                                <div class="form-control">{{ candidate_acceptance.declaration|yesno }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Recruiter's Name</label>
+                                                <div class="form-control">{{ candidate_acceptance.recruter_name }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Name of Approving Authority</label>
+                                                <div class="form-control">{{ candidate_acceptance.authority_name }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                      
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}
+
+{% block JavaScript %}
+<script type="text/javascript">
+  $(function () {
+      $(".date_picker").datepicker({
+        dateFormat: 'dd/mm/yyyy',
+        format: 'dd/mm/yyyy'
+      });
+
+      $(".date_picker_prev").datepicker({
+        maxDate: 0,
+        format: 'dd/mm/yyyy'
+      });
+      $('#daterange').daterangepicker({
+        autoUpdateInput: false,
+        locale: {
+            cancelLabel: 'Clear',
+            format: 'DD/MM/YYYY'
+        },
+          ranges: {
+             'Today': [moment(), moment()],
+             'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+             'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+             'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+             'This Month': [moment().startOf('month'), moment().endOf('month')],
+             'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+             'Last 3 Months': [moment().subtract(3, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+             'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+          }
+      });
+      $('#daterange').on('apply.daterangepicker', function(ev, picker) {
+          $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+      });
+      $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
+          $(this).val('');
+      });
+  });
+  $(document).ready(function(){
+  $("li.treeview").mouseover(function(){
+    $(this).addClass("menu-open");
+    $(this).children("ul.treeview-menu").css("display","block");
+  });
+  $("li.treeview").mouseout(function(){
+    $(this).removeClass("menu-open");
+    $(this).children("ul.treeview-menu").css("display","none");
+  });
+
+});
+
+////////////////////   search table start  //////////////////
+
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+
+////////////////////   search table end  //////////////////   
+    
+</script>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'staff/dashboard.html' %}
+{% load static %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+<div class="shadow p-4 mb-4 bg-white">
+    <h1> Thank You for Submiting form </h1>
+    <h3> soon you will get verification call....</h3>
+</div>
+{% endblock %}

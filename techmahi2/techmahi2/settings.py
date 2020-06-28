@@ -24,14 +24,14 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'zyj7r1_ez8@@jy+@*+$wr^gc*8b3fe%7_nntv-ow58u54e%u(1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['asif1436.pythonanywhere.com',]
 
 
 # Application definition
 
-INSTALLED_APPS = [    
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,16 +40,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'adminlte3',
     'staff',
+    'student',
     'bootstrap4',
+    'tempus_dominus',
+
 ]
 
 
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
 DATE_INPUT_FORMATS = (
             '%d/%m/%Y',  # '25/10/2006'
             '%d-%m-%Y',  # '25-10-2006'
             )
 
-            
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -79,6 +85,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'techmahi2.wsgi.application'
+
+
+
+# SMTP EMAIL Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST= 'smtp.gmail.com'
+EMAIL_PORT= 587
+EMAIL_HOST_USER= 'itsmak100@gmail.com'
+EMAIL_HOST_PASSWORD= 'm@k12345'
+EMAIL_USE_TLS= True
+
 
 
 # Database
@@ -127,6 +144,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+LOGIN_REDIRECT_URL='/home/'
+LOGOUT_REDIRECT_URL='/accounts/login/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = '/static/'
